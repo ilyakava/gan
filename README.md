@@ -172,7 +172,7 @@ OR if using a custom instance:
 gcloud beta compute ssh --zone=${ZONE} ${TPU_NAME} --project=${PROJECT_NAME}
 ```
 
-Once inside the TPU:
+Once inside the TPU host:
 
 ```
 export ZONE="europe-west4-a"
@@ -185,6 +185,7 @@ export PROJECT_NAME=xxx-xxx-xxx
 export PROJECT_ID=${PROJECT_NAME}
 export STORAGE_BUCKET=gs://${BUCKET_NAME}
 export TPU_ZONE=${ZONE}
+export TPU_NAME=tpu-xxx
 ```
 
 ## Installation TPU
@@ -214,7 +215,10 @@ source tpu/retry.sh
 
 Then run a script like so:
 
-`retry tpu/imagenet128_baseline.sh`
+`retry sh tpu/imagenet128_baseline.sh`
+
+This will retry the *sh file if execution crashes, which can happen on a TPU
+during eval once every 200k or so steps.
 
 ## TPU monitoring
 

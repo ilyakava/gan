@@ -5,6 +5,8 @@ export TRAIN_STEPS_PER_EVAL=10000
 export DATASET_ARGS='--image_size=32 --dataset_name=cifar10 --num_classes=10 --dataset_val_split_name=test'
 
 export ADDITIONAL='--critic_type=kplusone_fm \
+--generator_loss_fn=kplusonegan_pll_generator_loss \
+--kplusone_nll_discriminator_weight=1.0 \
 --num_eval_steps=9 \
 --mode=continuous_eval \
 --extra_eval_metrics'

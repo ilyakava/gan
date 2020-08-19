@@ -133,7 +133,9 @@ export PYTHONPATH=${TFGAN_REPO}:${PYTHONPATH}
 cd tensorflow_gan/examples
 ```
 
-Then run a script in `gpu/`.
+Then run a script in `gpu/` like so:
+
+`CUDA_VISIBLE_DEVICES=1 sh gpu/example_lowdiversity_genimages_imagenet128.sh`
 
 ## Requesitioning TPU
 
@@ -193,7 +195,7 @@ After launching run:
 
 ```
 pip3.7 install --upgrade tensorflow_datasets --user
-git clone --single-branch --branch dev https://github.com/ilyakavagan.git
+git clone https://github.com/ilyakavagan.git
 pip3.7 install tensorflow_gan --user
 ```
 
@@ -206,9 +208,13 @@ export PYTHONPATH=${TFGAN_REPO}:${PYTHONPATH}
 
 cd gan/tensorflow_gan/examples
 
-git pull origin dev
+git pull origin master
 source tpu/retry.sh
 ```
+
+Then run a script like so:
+
+`retry tpu/imagenet128_baseline.sh`
 
 ## TPU monitoring
 

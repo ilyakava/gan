@@ -228,9 +228,12 @@ If running locally use tensorboard.
 
 ### TPU - Print eval metrics in the cloud
 
-This requires a separate cpu instance, 6GB is enough memory.
-
 Use `gan/tensorflow_gan/examples/print_tf_log.py`
+
+This requires a separate cpu instance, 6GB is enough memory, for eg:
+
+`gcloud beta compute instances create cpu-only-eu --zone=${ZONE} --source-machine-image tf2p1 --custom-cpu 1 --custom-memory 6 --custom-vm-type n1`
+
 
 ### TPU - Monitoring in the cloud
 

@@ -220,15 +220,19 @@ Then run a script like so:
 This will retry the *sh file if execution crashes, which can happen on a TPU
 during eval once every 200k or so steps.
 
-## TPU monitoring
+## Monitoring
 
-### Print eval metrics in the cloud
+Simplest is `grep eval/incscore tensorflow.log`.
+
+If running locally use tensorboard.
+
+### TPU - Print eval metrics in the cloud
 
 This requires a separate cpu instance, 6GB is enough memory.
 
 Use `gan/tensorflow_gan/examples/print_tf_log.py`
 
-### Monitoring in the cloud
+### TPU - Monitoring in the cloud
 
 Cloud tpu tensorboard crashes very often, but it does work during the 1st hour of training while there are few logfiles.
 Run it with:
@@ -244,7 +248,7 @@ Most useful is the [TPU profiling](https://cloud.google.com/tpu/docs/tensorboard
 capture_tpu_profile --port=8080 --tpu=${TPU_NAME} --tpu_zone=${ZONE} --logdir=gs://${BUCKET_NAME}/experiments/${EXPERIMENT_NAME}/logdir
 ```
 
-### Downloading log files and monitoring locally (Not recommended)
+### TPU - Downloading log files and monitoring locally (Not recommended)
 
 [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install)
 

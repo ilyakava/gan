@@ -1,5 +1,5 @@
 
-export EXPERIMENT_NAME=late_cifar_base
+export EXPERIMENT_NAME=cifar_kp1_maybeog
 export BATCH_SIZE=64
 export TRAIN_STEPS_PER_EVAL=10000
 export DATASET_ARGS='--image_size=32 --dataset_name=cifar10 --num_classes=10 --dataset_val_split_name=test'

@@ -5,7 +5,7 @@ export DATA_DIR=/scratch1/ilya/locDoc/data/tfdf
 export BATCH_SIZE=64
 export DATASET_ARGS='--image_size=32 --dataset_name=cifar10 --num_classes=10 --dataset_val_split_name=test'
 
-# Improved GAN
+# Complement GAN
 # d loss is nll
 # g loss is csc and confuse
 export ADDITIONAL='--critic_type=kplusone_fm \

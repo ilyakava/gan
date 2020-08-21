@@ -64,7 +64,7 @@ def block(x, out_channels, name, downsample=True, act=tf.nn.relu):
       if downsample:
         x_0 = dsample(x_0)
     return x_0 + x
-
+    
 
 def optimized_block(x, out_channels, name, act=tf.nn.relu):
   """Builds optimized residual blocks for downsampling.
@@ -157,6 +157,45 @@ def discriminator_32_kplusone_fm(image, labels, df_dim, number_classes, act=tf.n
     classification_output = ops.snlinear(h6, flags.FLAGS.num_classes+1, name='d_sn_linear_kplusone')
     # output += tf.reduce_sum(input_tensor=h6 * h_labels, axis=1, keepdims=True)
     # output = classification_output[:,flags.FLAGS.num_classes:]
+    output = h6
+    
+  var_list = tf.compat.v1.get_collection(
+      tf.compat.v1.GraphKeys.TRAINABLE_VARIABLES, dis_scope.name)
+  return output, classification_output, var_list
+  
+def discriminator_32_kplusone_fm_badgan(image, labels, df_dim, number_classes, act=tf.nn.leaky_relu):
+  """Builds the discriminator graph.
+
+  Args:
+    image: The current batch of images to classify as fake or real.
+    labels: The corresponding labels for the images.
+    df_dim: The df dimension.
+    number_classes: The number of classes in the labels.
+    act: The activation function used in the discriminator.
+  Returns:
+    - A `Tensor` representing the logits of the discriminator.
+    - A list containing all trainable varaibles defined by the model.
+  """
+  del labels
+  noise = tf.compat.v1.keras.layers.GaussianNoise(0.05)
+  with tf.compat.v1.variable_scope(
+      'discriminator', reuse=tf.compat.v1.AUTO_REUSE) as dis_scope:
+    
+    image = tf.nn.dropout(noise(image), 0.2)
+    x = act(ops.snconv2d(image, df_dim, 3, 3, 1, 1, name='sn_conv1'))
+    x = act(ops.snconv2d(x, df_dim, 3, 3, 1, 1, name='sn_conv2'))
+    x = act(ops.snconv2d(x, df_dim, 3, 3, 2, 2, name='sn_conv3'))
+    x = tf.nn.dropout(x, 0.5)
+    x = act(ops.snconv2d(x, 2*df_dim, 3, 3, 1, 1, name='sn_conv4'))
+    x = act(ops.snconv2d(x, 2*df_dim, 3, 3, 1, 1, name='sn_conv5'))
+    x = act(ops.snconv2d(x, 2*df_dim, 3, 3, 2, 2, name='sn_conv6'))
+    x = tf.nn.dropout(x, 0.5)
+    x = act(ops.snconv2d(x, 2*df_dim, 3, 3, 1, 1, name='sn_conv7'))
+    x = act(ops.snconv2d(x, 2*df_dim, 1, 1, 1, 1, name='sn_conv8'))
+    x = act(ops.snconv2d(x, 2*df_dim, 1, 1, 2, 2, name='sn_conv9'))
+
+    h6 = tf.reduce_sum(input_tensor=x, axis=[1, 2])
+    classification_output = ops.snlinear(h6, flags.FLAGS.num_classes+1, name='d_sn_linear_kplusone')
     output = h6
     
   var_list = tf.compat.v1.get_collection(
@@ -615,6 +654,7 @@ discriminators = {
   (128, 'acgan_multiproj'): discriminator_128_multiproj,
   (32, 'acgan_multiproj'): discriminator_32_multiproj,
   (128, 'biggan_acgan'): biggan_discriminator_128,
+  (32, 'kplusone_fm_badgan'): discriminator_32_kplusone_fm_badgan,
 }
 
 discriminator = discriminators[flags.FLAGS.image_size, flags.FLAGS.critic_type]

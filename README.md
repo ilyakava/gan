@@ -126,6 +126,8 @@ pip install pillow
 
 ## Setup GPU
 
+From within the `gan` (this repo) folder:
+
 ```
 export TFGAN_REPO=`pwd`
 export PYTHONPATH=${TFGAN_REPO}/tensorflow_gan/examples:${PYTHONPATH}

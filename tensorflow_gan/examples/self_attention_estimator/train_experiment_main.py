@@ -121,7 +121,7 @@ flags.DEFINE_float('aux_mhinge_cond_generator_weight', None,
 flags.DEFINE_float('aux_mhinge_cond_discriminator_weight', None, 
                    'How to scale discriminator Multi-Hinge GAN loss, default is None., default is None.')
 flags.DEFINE_enum(
-    'critic_type', 'acgan', ['acgan', 'kplusone_fm', 'kplusone_wgan', 'acgan_noproj', 'acgan_multiproj', 'kplusone_fm_badgan'],
+    'critic_type', 'acgan', ['acgan', 'kplusone_fm', 'kplusone_wgan', 'acgan_noproj', 'acgan_multiproj', 'kplusone_fm_badgan', 'kplusone_fm_lrelu_dropout'],
     'Use this oprtion to switch between architectures for D and G.')
 flags.DEFINE_float('kplusone_mhinge_cond_discriminator_weight', None, 
                    'When using a K+1 GAN, how to scale the MHingeGAN loss. Default is None.')

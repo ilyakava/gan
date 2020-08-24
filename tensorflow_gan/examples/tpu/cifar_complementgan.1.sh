@@ -1,6 +1,6 @@
 
 export EXPERIMENT_NAME=cifar_complement_4step_conf0p5_lrelu_dropout
-export BATCH_SIZE=68
+export BATCH_SIZE=64
 export TRAIN_STEPS_PER_EVAL=20000
 export DATASET_ARGS='--image_size=32 --dataset_name=cifar10 --num_classes=10 --dataset_val_split_name=test'
 

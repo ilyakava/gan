@@ -240,7 +240,7 @@ def gen_images(hparams):
   except ValueError:
     cur_step = 0
   eval_lib.predict_and_write_images(estimator, train_eval_input_fn,
-                                        hparams.model_dir, 'step_%i' % cur_step)
+                                        hparams.model_dir, 'step_{:07d}'.format(cur_step))
                                         
 def gen_matrices(hparams):
   """..."""

@@ -15,6 +15,8 @@ export ADDITIONAL='--critic_type=kplusone_fm_lrelu_dropout \
 --extra_eval_metrics \
 --eval_batch_size=1024 \
 --num_eval_steps=9 \
---df_dim=96'
+--df_dim=96 \
+--mode=continuous_eval \
+--continuous_eval_timeout_secs=1'
 
 bash tpu/_eval_base.sh

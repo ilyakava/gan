@@ -117,7 +117,7 @@ In general:
 
 
 ```
-pip install tensorflow_datasets
+pip install tensorflow-datasets==2.1.0
 pip install tensorflow_gan
 pip uninstall -y tensorflow_probability
 pip install tensorflow_probability==0.7

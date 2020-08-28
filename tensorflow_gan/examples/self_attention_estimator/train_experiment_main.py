@@ -149,7 +149,7 @@ flags.DEFINE_integer( 'n_images_per_side_to_gen_per_tile', None, 'When exporting
 flags.DEFINE_bool('gen_images_with_margins', False, 'When exporting images per class, if this option is true the images will be sorted by the size of their classification margin.')
 flags.DEFINE_bool('extra_eval_metrics', False, 'Perform extra eval metrics like accuracy.')
 flags.DEFINE_integer( 'keep_checkpoint_max', 5, 'Number of most recent checkpoints to keep. Others will be deleted.')
-flags.DEFINE_float('generator_confuse_margin_size', 0.1, 'Used in kplusonegan_confuse_generator_loss.')
+flags.DEFINE_float('generator_confuse_margin_size', 0.1, 'Used in kplusonegan_confuse_generator_loss. If the distance (between 1st and 2nd most likely classes) is smaller than this, then do not update it.')
 flags.DEFINE_bool('gen_images_uniform_random_labels', False, 'If mode is gen_images, do not do it classwise if this is true.')
 
 

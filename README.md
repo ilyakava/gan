@@ -11,13 +11,12 @@ It uses the Imagenet, Cifar100, Cifar10 datasets.
 Please cite:
 
 ```
-@misc{kavalerov2019cgans,
-    title={cGANs with Multi-Hinge Loss},
-    author={Ilya Kavalerov and Wojciech Czaja and Rama Chellappa},
-    year={2019},
-    eprint={1912.04216},
-    archivePrefix={arXiv},
-    primaryClass={cs.LG}
+@InProceedings{Kavalerov_2021_WACV,
+author = {Kavalerov, Ilya and Czaja, Wojciech and Chellappa, Rama},
+title = {A Multi-Class Hinge Loss for Conditional GANs},
+booktitle = {Proceedings of the IEEE/CVF Winter Conference on Applications of Computer Vision (WACV)},
+month = {January},
+year = {2021}
 }
 ```
 

@@ -5,7 +5,7 @@
 This code is forked from TF-GAN. TF-GAN is a lightweight library for training and evaluating [Generative
 Adversarial Networks (GANs)](https://arxiv.org/abs/1406.2661).
 
-This code implements cGANs with Multi-Hinge Loss, for fully and semi supervised settings.
+This code implements cGANs with Multi-Hinge Loss from [this paper](https://arxiv.org/abs/1912.04216), for fully and semi supervised settings.
 It uses the Imagenet, Cifar100, Cifar10 datasets.
 
 Please cite:

@@ -160,6 +160,12 @@ The following command uses an image that can be created after launching in the g
 gcloud beta compute instances create tpu-eu-1 --zone=${ZONE} --source-machine-image tf2p1 --custom-cpu 1 --custom-memory 6 --custom-vm-type n1
 ```
 
+### Useful links
+
+- [GC VM Instances](https://console.cloud.google.com/compute/instances)
+- [GC Cloud shell](https://shell.cloud.google.com)
+- [GC Billing](https://console.cloud.google.com/billing)
+
 ## (Re)Connect to TPU
 
 In general:

@@ -1,4 +1,4 @@
-#!/usr/bin/python3.7
+#!/scratch0/ilya/locDoc/miniconda2/envs/venvtf2p1/bin/python
 """Prints interesting scalars from tf eval log files.
 
 Usage:

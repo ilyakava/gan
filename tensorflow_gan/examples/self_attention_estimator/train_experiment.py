@@ -158,7 +158,7 @@ def train_eval_input_fn(mode, params, restrict_classes=None, shift_classes=0):
       return gen_module.make_one_batch_constant_labels(bs, y)
     labels_todo = list(range(flags.FLAGS.num_classes))
     # hack to print your favorite classes
-    # labels_todo = list(sorted([130,96,90,88,164,175,281,289,290,292,294,323,441,475,555,581,607,654,661,663,688,779] * 5))
+    labels_todo = list(sorted([935,987,82] * 15))
     
     # okay, this is a ugly papercut, but an easy one-line modification of the above
     def _make_one_batch_unif_random_labels(index):
